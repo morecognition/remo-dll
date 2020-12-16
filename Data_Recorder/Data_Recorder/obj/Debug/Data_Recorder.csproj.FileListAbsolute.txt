@@ -1,0 +1,30 @@
+C:\iit\software dev\data_recorder\Data_Recorder\Data_Recorder\bin\Debug\Data_Recorder.exe.config
+C:\iit\software dev\data_recorder\Data_Recorder\Data_Recorder\bin\Debug\Data_Recorder.exe
+C:\iit\software dev\data_recorder\Data_Recorder\Data_Recorder\bin\Debug\Data_Recorder.pdb
+C:\iit\software dev\data_recorder\Data_Recorder\Data_Recorder\obj\Debug\Data_Recorder.csprojAssemblyReference.cache
+C:\iit\software dev\data_recorder\Data_Recorder\Data_Recorder\obj\Debug\Data_Recorder.Form1.resources
+C:\iit\software dev\data_recorder\Data_Recorder\Data_Recorder\obj\Debug\Data_Recorder.Properties.Resources.resources
+C:\iit\software dev\data_recorder\Data_Recorder\Data_Recorder\obj\Debug\Data_Recorder.csproj.GenerateResource.cache
+C:\iit\software dev\data_recorder\Data_Recorder\Data_Recorder\obj\Debug\Data_Recorder.exe
+C:\iit\software dev\data_recorder\Data_Recorder\Data_Recorder\obj\Debug\Data_Recorder.pdb
+C:\iit\software dev\data_recorder\Data_Recorder\Data_Recorder\bin\Debug\MathNet.Numerics.dll
+C:\iit\software dev\data_recorder\Data_Recorder\Data_Recorder\bin\Debug\morecognition.dll
+C:\iit\software dev\data_recorder\Data_Recorder\Data_Recorder\obj\Debug\Data_Recorder.csproj.CopyComplete
+C:\iit\software dev\data_recorder\Data_Recorder\Data_Recorder\bin\Debug\Newtonsoft.Json.dll
+C:\iit\software dev\data_recorder\Data_Recorder\Data_Recorder\bin\Debug\Newtonsoft.Json.xml
+C:\iit\software dev\data_recorder\Data_Recorder\Data_Recorder\bin\Debug\morecognition.pdb
+C:\iit\remo_dll_stripped\Data_Recorder\Data_Recorder\bin\Debug\Data_Recorder.exe.config
+C:\iit\remo_dll_stripped\Data_Recorder\Data_Recorder\bin\Debug\Data_Recorder.exe
+C:\iit\remo_dll_stripped\Data_Recorder\Data_Recorder\bin\Debug\Data_Recorder.pdb
+C:\iit\remo_dll_stripped\Data_Recorder\Data_Recorder\bin\Debug\MathNet.Numerics.dll
+C:\iit\remo_dll_stripped\Data_Recorder\Data_Recorder\bin\Debug\Newtonsoft.Json.dll
+C:\iit\remo_dll_stripped\Data_Recorder\Data_Recorder\bin\Debug\morecognition.pdb
+C:\iit\remo_dll_stripped\Data_Recorder\Data_Recorder\bin\Debug\Newtonsoft.Json.xml
+C:\iit\remo_dll_stripped\Data_Recorder\Data_Recorder\obj\Debug\Data_Recorder.csprojAssemblyReference.cache
+C:\iit\remo_dll_stripped\Data_Recorder\Data_Recorder\obj\Debug\Data_Recorder.Form1.resources
+C:\iit\remo_dll_stripped\Data_Recorder\Data_Recorder\obj\Debug\Data_Recorder.Properties.Resources.resources
+C:\iit\remo_dll_stripped\Data_Recorder\Data_Recorder\obj\Debug\Data_Recorder.csproj.GenerateResource.cache
+C:\iit\remo_dll_stripped\Data_Recorder\Data_Recorder\obj\Debug\Data_Recorder.csproj.CopyComplete
+C:\iit\remo_dll_stripped\Data_Recorder\Data_Recorder\obj\Debug\Data_Recorder.exe
+C:\iit\remo_dll_stripped\Data_Recorder\Data_Recorder\obj\Debug\Data_Recorder.pdb
+C:\iit\remo_dll_stripped\Data_Recorder\Data_Recorder\bin\Debug\morecognition.dll

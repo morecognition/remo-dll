@@ -32,5 +32,3 @@ This is an interface which contains a method triggered every time a packet as be
 This class defines the structure of a packet of data. This class is similar to the [Sample](#1.2.2-sample) class but is open to application that tries to access it using a the morecognition dll.
 #### 1.3.3 RtData
 This class uses an object from the [Device](#1.2.1-device) class and defines methods to connect to the REMO device and stream data from it.
----
-## 2 

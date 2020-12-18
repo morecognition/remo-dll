@@ -136,7 +136,7 @@ namespace morecognition
         }
 
         /// <summary>
-        /// This method composes a message to be sent to the REMO device to set the operation of heptice feedback,
+        /// This method composes a message to be sent to the REMO device to set the enabling of heptice feedback,
         /// This method is not in use currently since the device currently does not have the hardware component inserted.
         /// </summary>
         /// <param name="com"></param>

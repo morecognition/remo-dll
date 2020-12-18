@@ -21,7 +21,9 @@ namespace morecognition
         /// <summary>
         /// This enum defines the different modes the register byte can take.
         /// This is the 4th byte out of a total 8 bytes sent in the message.
-        /// The value of this enumerator must be converted to a string before being converted to a raw byte.
+        /// This byte gives information about the byte that follows it i.e. the 5th byte.
+        /// Giving information on what register the message is trying to set e.g. 
+        /// Acquistion Mode register, Operating Mode register or Motor mode register
         /// </summary>
         public enum REGISTER
         {
@@ -63,7 +65,7 @@ namespace morecognition
         }
 
         /// <summary>
-        /// OPERATION enumerator defines the 4th byte of the message sent. Total of 8 bytes.
+        /// OPERATION enumerator defines the 5th byte of the message sent. Total of 8 bytes.
         /// </summary>
         public enum OPERATION
         {
@@ -151,7 +153,7 @@ namespace morecognition
             // BYTE 3: S
             data.Add((byte)'S');
 
-            // BYTE 4: Byte which sends the acquistion mode
+            // BYTE 4: This byte tells which mode is being set in the 6th byte - Acquisition, Operating or Motor
             data.AddRange(Encoding.ASCII.GetBytes(((byte)reg).ToString()));
 
             if (op == OPERATION.WRITE)
@@ -159,7 +161,7 @@ namespace morecognition
                 // BYTE 5: Byte that defines the type of operation (Write, Read or Help)
                 data.Add((byte)op);
 
-                // BYTE 6: Byte that defines the mode of acquisition (RAW, RAW_IMU or RMS)
+                // BYTE 6: This is the payload of the message i.e., the spefic operational value to be set for the three possible modes in Byte 4
                 data.AddRange(Encoding.ASCII.GetBytes(value.ToString()));
             }
             else if (op == OPERATION.READ)
@@ -168,7 +170,7 @@ namespace morecognition
                 data.Add((byte)op);
                 if (value != 0)
                 {
-                    // BYTE 6: Byte that defines the mode of acquisition (RAW, RAW_IMU or RMS)
+                    // BYTE 6: This is the payload of the message i.e., the spefic operational value to be set for the three possible modes in Byte 4
                     data.AddRange(Encoding.ASCII.GetBytes(value.ToString()));
                 }
             }
@@ -177,7 +179,7 @@ namespace morecognition
                 // BYTE 5: Byte that defines the type of operation (Write, Read or Help)
                 data.Add((byte)op);
 
-                // BYTE 6: Byte that defines the mode of acquisition (RAW, RAW_IMU or RMS)
+                // BYTE 6: This is the payload of the message i.e., the spefic operational value to be set for the three possible modes in Byte 4
                 data.AddRange(Encoding.ASCII.GetBytes(value.ToString()));
             }
 
@@ -202,31 +204,44 @@ namespace morecognition
             // proerty "value".
             List<byte> data = new List<byte>();
 
+            // BYTE 1: A
             data.Add((byte)'A');
+            // BYTE 2: T
             data.Add((byte)'T');
+            // BYTE 3: S
             data.Add((byte)'S');
+            // BYTE 4: This byte tells which mode is being set in the 6th byte - Acquisition, Operating or Motor
             data.AddRange(Encoding.ASCII.GetBytes(((byte)reg).ToString()));
 
             if (op == OPERATION.WRITE)
             {
+                // BYTE 5: Tells the type of action of the message
                 data.Add((byte)op);
+                // BYTE 6: This is the payload of the message i.e., the spefic operational value to be set for the three possible modes in Byte 4
                 data.AddRange(value_list);
             }
             else if (op == OPERATION.READ)
             {
+                // BYTE 5: Tells the type of action of the message
                 data.Add((byte)op);
                 if (value != 0)
                 {
+                    // BYTE 6: This is the payload of the message i.e., the spefic operational value to be set for the three possible modes in Byte 4
                     data.AddRange(value_list);
                 }
             }
             else if (op == OPERATION.HELP)
             {
+                // BYTE 5: Tells the type of action of the message
                 data.Add((byte)op);
+                // BYTE 6: This is the payload of the message i.e., the spefic operational value to be set for the three possible modes in Byte 4
                 data.AddRange(value_list);
             }
 
+            // BYTE 7: Carriage return byte.
             data.Add((byte)CR_LF_BYTE.AT_COMMAND_CR);
+
+            // BYTE 8: Line feed byte.
             data.Add((byte)CR_LF_BYTE.AT_COMMAND_LF);
 
             buffer = data.ToArray();

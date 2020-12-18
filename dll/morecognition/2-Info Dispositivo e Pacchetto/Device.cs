@@ -25,7 +25,6 @@ namespace morecognition
         private int RXcount;
         private int parseErrCount;
         private int syncErrCount;
-        //Dan_Comment - Both of the following missing in line 27 to line 29
         private DateTime _firstTimestamp;
         bool devStatus;
 
@@ -33,11 +32,9 @@ namespace morecognition
         {
             _serial = new SerialPort();
             _actions = new Queue<Action>();
-            //Dan_Comment - devStatus missing in line 29 to line 33
             devStatus = false;
         }
 
-        //Dan_Comment - IsConnected bool is missing in between line 33 and line 35
         public bool IsConnected()
         {
             return devStatus;
@@ -55,7 +52,6 @@ namespace morecognition
             }
         }
 
-        //Dan_Comment - Missing these statements from line 45 to 47
         public DateTime FirstTimestamp { get => _firstTimestamp; set => _firstTimestamp = value; }
         public SerialPort Serial => _serial;
 
@@ -73,7 +69,6 @@ namespace morecognition
                     _serial.Open();
                     _serial.DiscardInBuffer();
                     _serial.DiscardOutBuffer();
-
                     _actions.Enqueue(() => ATcommandExecution.SetAcquisitionmode(this, mode));
                     _actions.Enqueue(() => ATcommandExecution.SetOperatingMode(this, ATcommand.OpMode.TxMode));
 
@@ -137,17 +132,16 @@ namespace morecognition
             if (acqMode == ATcommand.ACQmode.RAW)
             {
                 mult = 40;
-                //Dan_Comment - Change here line 125
                 packetLen = 23;
             }
             else
             {
                 mult = 1;
-                //Dan_Comment - Change here line 130
                 packetLen = 41;
             }
 
-            //Dan_Comment - Change here from 7 to 5 in line 132
+            // The first 7 bytes are an indicator in the start %, 2 null bytes and 4 bytes for time stamp
+            // The rest are realted to data
             packetDataLen = packetLen - 7;
             DateTime start_msg = new DateTime();
             while (!token.IsCancellationRequested)
@@ -165,7 +159,6 @@ namespace morecognition
 
                 switch (acqMode)
                 {
-                    //Dan_Comment - Cases are different here lin 149 to 159
                     case ATcommand.ACQmode.RMS:
                     case ATcommand.ACQmode.RAW_IMU:
                         _scheduler.Schedule(() => {
@@ -185,8 +178,7 @@ namespace morecognition
                     toBeRead = _serial.BytesToRead;
                 }
 
-                //Dan_Comment - The follwing line is not commented line 166
-                //Console.WriteLine(toBeRead +" "+ buff_list.Count);   
+                // Console.WriteLine(toBeRead +" "+ buff_list.Count);   
             }
 
             sw.Stop();
@@ -198,7 +190,6 @@ namespace morecognition
             TimeSpan ts = sw.Elapsed;
             string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:000}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
 
-            //Dan_Comment - Difference here, the following line is missing in between line 177 and 178
             Console.WriteLine($"Dispositivo: {ComName}");
             Console.WriteLine("Ricevuti " + RXcount + " pacchetti in " + elapsedTime);
             Console.WriteLine("Ricevuti " + string.Format("{0:N3}", (double)RXcount / sw.Elapsed.TotalSeconds) + " pacchetti/s");
@@ -250,8 +241,6 @@ namespace morecognition
                             {
                                 s_list.Add(s);
 
-                                //Dan_Comment - Difference here from line 227
-
                                 //if (s_list.Count > 1)
                                 //{
                                 //    UInt16 diff = (UInt16)(s_list[s_list.Count - 1].counter - s_list[s_list.Count - 2].counter);
@@ -292,8 +281,6 @@ namespace morecognition
                                         if (ParseMessage(recover, out Sample s))
                                         {
                                             s_list.Add(s);
-
-                                            //Dan_Comment - Difference here from line 267
 
                                             //if (s_list.Count > 1)
                                             //{
@@ -363,7 +350,6 @@ namespace morecognition
                         message.RemoveAt(message.Count - 1);
                         message.RemoveAt(message.Count - 1);
 
-                        //Dan_Comment - Diference here in line 335
                         campione.total_decimilliseconds = (UInt32)(((UInt32)message[0] << 24) | ((UInt32)message[1] << 16) | ((UInt32)message[2] << 8) | (UInt32)message[3]);
                         message.RemoveAt(0);
                         message.RemoveAt(0);
@@ -379,7 +365,6 @@ namespace morecognition
                             //}
                             //else
 
-                            //Dan_Comment - A difference from the code in line 341 of older code
                             campione.date = _firstTimestamp.AddMilliseconds(campione.total_decimilliseconds / 10.0);
 
                             for (byte i = 0; i < 8; i++)
